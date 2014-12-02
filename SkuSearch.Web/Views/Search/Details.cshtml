@@ -1,0 +1,63 @@
+﻿@model Tuple<IEnumerable<SkuSearch.DataAccess.MultilanguageProperty>, IEnumerable<SkuSearch.DataAccess.Product>>
+
+
+<body class="metro"> 
+    
+    <div id="details-container"> 
+     @{
+        ViewBag.Title = "Details ";
+    }        
+
+     @{
+        Layout = "~/Views/Shared/_LayoutPage1.cshtml"; 
+      }  
+ 
+    @{Html.RenderAction("CategoryMenu");}
+
+    <div style="margin-left: 100px; top: 55px; position: absolute; width: 500px">
+    @foreach (var product in Model.Item1)
+    {
+     
+         if (Model.Item2.FirstOrDefault().ProductImage != null)
+                                            { 
+                                              <div id="image-list-container">                                                  
+                                                        <img src="@Url.Content("/Content2/images/"+Model.Item2.FirstOrDefault().ProductImage)" />                                                        
+                                                  </div>
+                                                
+                                            }
+                                            else
+                                            {
+                                               <div id="image-list-container">                                                      
+                                                        <img src="@Url.Content("~/Content2/images/cart_product_default.png")" />                                                                                                      
+                                                </div>
+                                            }                  
+         
+        <ul style="list-style-type: none; margin-left: 0px; padding-left: 0px;"> 
+            <li><b>@Html.DisplayFor(modelProduct => product.MultilanguagePropertyProductName)</b></li>     
+            <li>...</li>            
+            <li><b>URL:</b> <a href="http://@product.MultilanguagePropertyProductURL">@product.MultilanguagePropertyProductURL</a></li>  
+            <li>
+                <b>Barcode:</b> @Html.DisplayFor(modelProduct => Model.Item2.FirstOrDefault().ProductBarCode)
+            </li>
+                 @if (Model.Item2.FirstOrDefault().ProductAdditionalCode != null)
+                 {
+                    <li>
+                        <b>Additional code:</b> @Html.DisplayFor(modelProduct => Model.Item2.FirstOrDefault().ProductAdditionalCode)
+                    </li>
+                 }
+            <li>...</li>
+            <li>@Html.DisplayFor(modelProduct => product.MultilanguagePropertyProductDescription)</li>
+                 </ul>
+                 
+                      
+         
+    }
+        </div>
+        </div>
+</body>
+        
+
+   
+        
+    
+

@@ -1,0 +1,21 @@
+﻿@model IEnumerable<SkuSearch.DataAccess.MultilanguageProperty>  
+
+<body class="metro">
+    @{
+        ViewBag.Title = "Search";    
+    }
+
+     @{
+         Layout = "~/Views/Shared/_LayoutPage1.cshtml"; 
+      } 
+            
+    <div>
+        @{Html.RenderAction("CategoryMenu");}
+
+        @{Html.RenderAction("SearchingTextbox");}
+              
+    </div>
+</body>
+        
+    
+    

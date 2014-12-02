@@ -1,0 +1,43 @@
+﻿@model Tuple<IEnumerable<SkuSearch.DataAccess.MultilanguageProperty>, IEnumerable<SkuSearch.DataAccess.Product>> 
+
+<div class="searching-container"> 
+            @using (Html.BeginForm())
+             {
+                <div class="element input-element">                                       
+                    <form >                        
+                                <div><div class="input-control text" style="height:27px; width:auto; float: left;">                                    
+                                    @Html.TextBox("SearchString","", new { placeholder = "Search..."})
+                                    <button class="btn-search"></button>                                    
+                                </div>                                   
+                                   <div style="margin-left:190px"><p>Search by name <br>or description</p></div>
+                                </div>                      
+                     </form>
+                </div>
+             }
+
+            @foreach (var product in Model.Item1)
+            {
+                
+                
+                        if (Request.Params["categoryName"] == null)
+                        {             
+                            
+                            <ul><li>@Html.ActionLink(product.MultilanguagePropertyProductName, "Details", new { id = product.MultilanguagePropertyID })</li></ul> }
+                        else
+                        {
+                            foreach (var originalProduct in Model.Item2)
+                {
+                            if (originalProduct.Category.CategoryName == Request["categoryName"])
+                            {
+                                if (product.ProductRef == originalProduct.ProductID)
+                                {
+                                   <ul><li>@Html.ActionLink(product.MultilanguagePropertyProductName, "Details", new { id = product.MultilanguagePropertyID })</li></ul> 
+                                }                                
+                            } 
+                        }
+                    
+            }
+            }
+
+            
+    </div>

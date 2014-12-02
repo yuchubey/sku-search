@@ -1,0 +1,10 @@
+E:\Yura\SkuSearch\SkuSearch.DataAccess\bin\Release\SkuSearch.DataAccess.dll.config
+E:\Yura\SkuSearch\SkuSearch.DataAccess\bin\Release\SkuSearch.DataAccess.dll
+E:\Yura\SkuSearch\SkuSearch.DataAccess\bin\Release\SkuSearch.DataAccess.pdb
+E:\Yura\SkuSearch\SkuSearch.DataAccess\bin\Release\EntityFramework.dll
+E:\Yura\SkuSearch\SkuSearch.DataAccess\bin\Release\EntityFramework.SqlServer.dll
+E:\Yura\SkuSearch\SkuSearch.DataAccess\bin\Release\EntityFramework.xml
+E:\Yura\SkuSearch\SkuSearch.DataAccess\bin\Release\EntityFramework.SqlServer.xml
+E:\Yura\SkuSearch\SkuSearch.DataAccess\obj\Release\SkuSearch.DataAccess.csprojResolveAssemblyReference.cache
+E:\Yura\SkuSearch\SkuSearch.DataAccess\obj\Release\SkuSearch.DataAccess.dll
+E:\Yura\SkuSearch\SkuSearch.DataAccess\obj\Release\SkuSearch.DataAccess.pdb

@@ -1,0 +1,145 @@
+﻿@model SkuSearch.Web.ViewModels.StockLocationsViewModel
+
+<body class="metro">
+     @{
+       ViewBag.Title = "Index";
+      Layout = "~/Views/Shared/_LayoutPage1.cshtml";                 
+     } 
+    
+    @helper Truncate(string input, int length)
+    {
+           if (input.Length <= length) 
+            { 
+                @input
+            } 
+        else 
+        { 
+            @input.Substring(0, length)<text>...</text>
+        } 
+    }
+
+       
+  <div id="details-container"> 
+      <div style="margin-left: 10px; width: 100%; display:inline-block">
+          
+           @{var url = String.Format("http://maps.google.com/maps/api/geocode/xml?address={0}&sensor=false", Server.UrlEncode(Request.Params["myGeolocation"]));
+
+        // Load the XML into an XElement object
+        var results = System.Xml.Linq.XElement.Load(url);        
+         
+     <div style="margin-left: 10px; margin-top: 10px; width: 300px">   
+       @Maps.GetGoogleHtml(results.Element("result").Element("formatted_address").Value,
+       latitude: results.Element("result").Element("geometry").Element("location").Element("lat").Value,
+       longitude: results.Element("result").Element("geometry").Element("location").Element("lng").Value,
+                    width: "300",
+                    height: "200"                                     
+                    )
+         </div>
+        }                   
+           
+   @{Html.RenderAction("CategoryMenu", "Search");}         
+        
+          
+      
+    @{
+        //get unique products
+       List<dynamic> productsForDisplay = new List<dynamic>();
+       List<string> uniqueProductNames = new List<string>();
+       List<SkuSearch.DataAccess.Product> uniqueOriginalProducts = new List<SkuSearch.DataAccess.Product>();        
+                
+       for (int i = 0; i < Model.searchingProducts.Count; i++ )
+       {
+           if (!uniqueProductNames.Contains(Model.searchingProducts[i].MultilanguagePropertyProductName))
+           {
+               uniqueProductNames.Add(Model.searchingProducts[i].MultilanguagePropertyProductName);
+               if (Model.searchingProducts[i].ProductRef == Model.originalProducts[i].ProductID)
+               {
+                   uniqueOriginalProducts.Add(Model.originalProducts[i]);
+               }
+               productsForDisplay.Add(new
+               {
+                   productName = Model.searchingProducts[i].MultilanguagePropertyProductName,
+                   stockLocationName = Model.searchingAddress[i].StockLocationName,
+                   distance = Math.Round(Model.distance[i] * 100, 2)                                                   
+               });
+                                             
+           }       
+       }                        
+    }   
+             
+       <div class="searching-container">           
+                      
+           @using (Html.BeginForm())
+             {
+                <div class="element input-element">                                       
+                    <form >                        
+                                <div><div class="input-control text" style="height:27px; width:auto; float: left;">                                    
+                                    @Html.TextBox("SearchString","", new { placeholder = "Search..."})
+                                    <button class="btn-search"></button>                                    
+                                </div>                               
+                                </div>                      
+                     </form>
+                </div>
+             }
+                    
+          <div id ="product-list-container" style="width: 750px; margin-top: 0px; position: absolute">              
+                <ul id="product-list">
+                    
+                    @*List of stocks for every product*@
+                    
+                    @{
+                        var storages = new List<SkuSearch.DataAccess.StockLocation>();
+                        foreach (var product in Model.originalProducts)
+                        {
+                            foreach (var storage in Model.productStorages)
+                            {
+                                foreach (var stock in Model.searchingAddress)
+                                {
+                            {
+                                if ((product.ProductID == storage.ProductRef) && (stock.StockLocationID == storage.StockLocationRef))
+                                {
+                                    storages.Add(stock);
+                                }
+                            }}}
+                        }
+                     }
+
+
+
+                    @for (int i = 0; i < productsForDisplay.Count; i++ )
+                        
+                    { 
+                        
+                          
+                        <li>
+                        @if (uniqueOriginalProducts[i].ProductImage != null)                     
+                        {
+                          <div id="image-list-container"><a title="@productsForDisplay[i].productName" href="@Url.Action("Details", "Search", new { id = uniqueOriginalProducts[i].ProductID })"><img src="@Url.Content("/Content2/images/"+uniqueOriginalProducts[i].ProductImage)"/></a></div>
+                            <a title="@productsForDisplay[i].productName" href="@Url.Action("Details", "Search", new { id = uniqueOriginalProducts[i].ProductID })">@Truncate(productsForDisplay[i].productName, 30).ToString()</a><br>                          
+                          @productsForDisplay[i].distance @:km in "@productsForDisplay[i].stockLocationName"<br>                                                
+                        }
+                        
+                        else 
+                        {
+                          <div id="image-list-container"><a title="@productsForDisplay[i].productName" href="@Url.Action("Details", "Search", new { id = uniqueOriginalProducts[i].ProductID })"><img src="@Url.Content("~/Content2/images/cart_product_default.png")"/></a></div>
+                          <a title="@productsForDisplay[i].productName" href="@Url.Action("Details", "Search", new { id = uniqueOriginalProducts[i].ProductID })">@Truncate(productsForDisplay[i].productName, 30).ToString()</a><br>
+                          @productsForDisplay[i].distance @:km in "@productsForDisplay[i].stockLocationName"<br>
+                            
+                        }  
+                                            
+                      </li>                                                    
+                    }                          
+                </ul>
+             </div>
+          </div>
+          </div>
+      </div> 
+    
+         
+         
+
+        
+            
+
+         
+</body>

@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SkuSearchDBModelStoreContainer" CdmEntityContainer="SkuSearchDBEntities">
+    <EntitySetMapping Name="AdditionalProperty">
+      <EntityTypeMapping TypeName="SkuSearchDBModel.AdditionalProperty">
+        <MappingFragment StoreEntitySet="AdditionalProperty">
+          <ScalarProperty Name="AdditionalPropertyImportance" ColumnName="AdditionalPropertyImportance" />
+          <ScalarProperty Name="AdditionalPropertyValue" ColumnName="AdditionalPropertyValue" />
+          <ScalarProperty Name="AdditionalPropertyName" ColumnName="AdditionalPropertyName" />
+          <ScalarProperty Name="MultilanguagePropertyRef" ColumnName="MultilanguagePropertyRef" />
+          <ScalarProperty Name="AdditionalPropertyID" ColumnName="AdditionalPropertyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Category">
+      <EntityTypeMapping TypeName="SkuSearchDBModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="CategoryParentRef" ColumnName="CategoryParentRef" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CategoryTranslated">
+      <EntityTypeMapping TypeName="SkuSearchDBModel.CategoryTranslated">
+        <MappingFragment StoreEntitySet="CategoryTranslated">
+          <ScalarProperty Name="CategoryTranslatedName" ColumnName="CategoryTranslatedName" />
+          <ScalarProperty Name="LanguageRef" ColumnName="LanguageRef" />
+          <ScalarProperty Name="CategoryRef" ColumnName="CategoryRef" />
+          <ScalarProperty Name="CategoryTranslatedID" ColumnName="CategoryTranslatedID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Company">
+      <EntityTypeMapping TypeName="SkuSearchDBModel.Company">
+        <MappingFragment StoreEntitySet="Company">
+          <ScalarProperty Name="CompanyLongitude" ColumnName="CompanyLongitude" />
+          <ScalarProperty Name="CompanyLatitude" ColumnName="CompanyLatitude" />
+          <ScalarProperty Name="CompanyLocationCountry" ColumnName="CompanyLocationCountry" />
+          <ScalarProperty Name="CompanyPostcode" ColumnName="CompanyPostcode" />
+          <ScalarProperty Name="CompanyCounty" ColumnName="CompanyCounty" />
+          <ScalarProperty Name="CompanyTown" ColumnName="CompanyTown" />
+          <ScalarProperty Name="CompanyAddess2" ColumnName="CompanyAddess2" />
+          <ScalarProperty Name="CompanyAddress1" ColumnName="CompanyAddress1" />
+          <ScalarProperty Name="CompanyUrl" ColumnName="CompanyUrl" />
+          <ScalarProperty Name="CompanyLogo" ColumnName="CompanyLogo" />
+          <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+          <ScalarProperty Name="CompanyCountry" ColumnName="CompanyCountry" />
+          <ScalarProperty Name="CompanyNameNative" ColumnName="CompanyNameNative" />
+          <ScalarProperty Name="CompanyNameEn" ColumnName="CompanyNameEn" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Company_StockLocation">
+      <EntityTypeMapping TypeName="SkuSearchDBModel.Company_StockLocation">
+        <MappingFragment StoreEntitySet="Company_StockLocation">
+          <ScalarProperty Name="StockLocationRef" ColumnName="StockLocationRef" />
+          <ScalarProperty Name="CompanyRef" ColumnName="CompanyRef" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CompanyTranslated">
+      <EntityTypeMapping TypeName="SkuSearchDBModel.CompanyTranslated">
+        <MappingFragment StoreEntitySet="CompanyTranslated">
+          <ScalarProperty Name="CompanyTranslatedName" ColumnName="CompanyTranslatedName" />
+          <ScalarProperty Name="LanguageRef" ColumnName="LanguageRef" />
+          <ScalarProperty Name="CompanyRef" ColumnName="CompanyRef" />
+          <ScalarProperty Name="CompanyTranslatedID" ColumnName="CompanyTranslatedID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employee">
+      <EntityTypeMapping TypeName="SkuSearchDBModel.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="EmployeeType" ColumnName="EmployeeType" />
+          <ScalarProperty Name="CompanyRef" ColumnName="CompanyRef" />
+          <ScalarProperty Name="UserRef" ColumnName="UserRef" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MultilanguageProperty">
+      <EntityTypeMapping TypeName="SkuSearchDBModel.MultilanguageProperty">
+        <MappingFragment StoreEntitySet="MultilanguageProperty">
+          <ScalarProperty Name="MultilanguagePropertyProductURL" ColumnName="MultilanguagePropertyProductURL" />
+          <ScalarProperty Name="MultilanguagePropertyProductDescription" ColumnName="MultilanguagePropertyProductDescription" />
+          <ScalarProperty Name="MultilanguagePropertyProductName" ColumnName="MultilanguagePropertyProductName" />
+          <ScalarProperty Name="ProductRef" ColumnName="ProductRef" />
+          <ScalarProperty Name="WorldLanguageRef" ColumnName="WorldLanguageRef" />
+          <ScalarProperty Name="MultilanguagePropertyID" ColumnName="MultilanguagePropertyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product">
+      <EntityTypeMapping TypeName="SkuSearchDBModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="ProductUrl" ColumnName="ProductUrl" />
+          <ScalarProperty Name="ProductAdditionalCode" ColumnName="ProductAdditionalCode" />
+          <ScalarProperty Name="ProductBarCode" ColumnName="ProductBarCode" />
+          <ScalarProperty Name="CategoryRef" ColumnName="CategoryRef" />
+          <ScalarProperty Name="CompanyRef" ColumnName="CompanyRef" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductStorage">
+      <EntityTypeMapping TypeName="SkuSearchDBModel.ProductStorage">
+        <MappingFragment StoreEntitySet="ProductStorage">
+          <ScalarProperty Name="ProductStorageQuantityLeft" ColumnName="ProductStorageQuantityLeft" />
+          <ScalarProperty Name="ProductStorageMinShownQuantity" ColumnName="ProductStorageMinShownQuantity" />
+          <ScalarProperty Name="ProductStorageMaxShownQuantity" ColumnName="ProductStorageMaxShownQuantity" />
+          <ScalarProperty Name="ProductStorageDeliveryTime" ColumnName="ProductStorageDeliveryTime" />
+          <ScalarProperty Name="ProductStorageLocationStatus" ColumnName="ProductStorageLocationStatus" />
+          <ScalarProperty Name="StockLocationRef" ColumnName="StockLocationRef" />
+          <ScalarProperty Name="ProductRef" ColumnName="ProductRef" />
+          <ScalarProperty Name="ProductStorageID" ColumnName="ProductStorageID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StockLocation">
+      <EntityTypeMapping TypeName="SkuSearchDBModel.StockLocation">
+        <MappingFragment StoreEntitySet="StockLocation">
+          <ScalarProperty Name="StockLocationLongitude" ColumnName="StockLocationLongitude" />
+          <ScalarProperty Name="StockLocationLatitude" ColumnName="StockLocationLatitude" />
+          <ScalarProperty Name="StockLocationCountry" ColumnName="StockLocationCountry" />
+          <ScalarProperty Name="StockLocationPostcode" ColumnName="StockLocationPostcode" />
+          <ScalarProperty Name="StockLocationCounty" ColumnName="StockLocationCounty" />
+          <ScalarProperty Name="StockLocationTown" ColumnName="StockLocationTown" />
+          <ScalarProperty Name="StockLocationAddess2" ColumnName="StockLocationAddess2" />
+          <ScalarProperty Name="StockLocationAddress1" ColumnName="StockLocationAddress1" />
+          <ScalarProperty Name="StockLocationUrl" ColumnName="StockLocationUrl" />
+          <ScalarProperty Name="StockLocationEmail" ColumnName="StockLocationEmail" />
+          <ScalarProperty Name="StockLocationPhone" ColumnName="StockLocationPhone" />
+          <ScalarProperty Name="StockLocationWorkingHoursRef" ColumnName="StockLocationWorkingHoursRef" />
+          <ScalarProperty Name="StockLocationDescription" ColumnName="StockLocationDescription" />
+          <ScalarProperty Name="StockLocationOwnerType" ColumnName="StockLocationOwnerType" />
+          <ScalarProperty Name="StockLocationName" ColumnName="StockLocationName" />
+          <ScalarProperty Name="StockLocationID" ColumnName="StockLocationID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StockLocationTranslated">
+      <EntityTypeMapping TypeName="SkuSearchDBModel.StockLocationTranslated">
+        <MappingFragment StoreEntitySet="StockLocationTranslated">
+          <ScalarProperty Name="StockLocationTraslatedName" ColumnName="StockLocationTraslatedName" />
+          <ScalarProperty Name="WorldLanguageRef" ColumnName="WorldLanguageRef" />
+          <ScalarProperty Name="StockLocationRef" ColumnName="StockLocationRef" />
+          <ScalarProperty Name="StockLocationTraslatedID" ColumnName="StockLocationTraslatedID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Translation">
+      <EntityTypeMapping TypeName="SkuSearchDBModel.Translation">
+        <MappingFragment StoreEntitySet="Translation">
+          <ScalarProperty Name="TranslationValue" ColumnName="TranslationValue" />
+          <ScalarProperty Name="TranslationKey" ColumnName="TranslationKey" />
+          <ScalarProperty Name="WorldLanguageRef" ColumnName="WorldLanguageRef" />
+          <ScalarProperty Name="TranslationID" ColumnName="TranslationID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="SkuSearchDBModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkingHours">
+      <EntityTypeMapping TypeName="SkuSearchDBModel.WorkingHours">
+        <MappingFragment StoreEntitySet="WorkingHours">
+          <ScalarProperty Name="WorkingHoursLunchTimeEnd" ColumnName="WorkingHoursLunchTimeEnd" />
+          <ScalarProperty Name="WorkingHoursLunchTimeBegin" ColumnName="WorkingHoursLunchTimeBegin" />
+          <ScalarProperty Name="WorkingHoursCloseTime" ColumnName="WorkingHoursCloseTime" />
+          <ScalarProperty Name="WorkingHoursOpenTime" ColumnName="WorkingHoursOpenTime" />
+          <ScalarProperty Name="WorkingHoursDayOfWeek" ColumnName="WorkingHoursDayOfWeek" />
+          <ScalarProperty Name="StockLocationRef" ColumnName="StockLocationRef" />
+          <ScalarProperty Name="WorkingHoursID" ColumnName="WorkingHoursID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorldLanguage">
+      <EntityTypeMapping TypeName="SkuSearchDBModel.WorldLanguage">
+        <MappingFragment StoreEntitySet="WorldLanguage">
+          <ScalarProperty Name="WorldLanguageName" ColumnName="WorldLanguageName" />
+          <ScalarProperty Name="WorldLanguageID" ColumnName="WorldLanguageID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

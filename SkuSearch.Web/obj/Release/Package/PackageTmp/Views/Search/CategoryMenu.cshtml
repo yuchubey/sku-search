@@ -1,0 +1,54 @@
+﻿@model IEnumerable<SkuSearch.DataAccess.Category>
+
+<!DOCTYPE html>
+<html>
+    <head>                      
+        @*<script>
+            $(document).ready(function () {
+                $(".treeview").treeview({
+                    onNodeClick: function (node) {                         
+                        console.log(node);
+                        //var addressValue = $(this).attr("href");
+                        //alert(addressValue);
+                    }
+                });
+            });
+        </script>*@
+    </head>
+   
+
+    <body class="metro">
+        <header class="bg-dark" data-load="header.html"></header>
+        <div class="category-container">    
+
+                                <div class="example">                               
+                                
+                                    <ul class="treeview">
+                                        @foreach (var category in Model)
+                                        { 
+                                            <li class="node-collapsed">
+                                                <a href="@Url.Action("Browse", "Search", new { id = category.CategoryID, categoryName = category.CategoryName })" style="padding-left: 0px;">
+                                                    <span class='node-toggle'></span>                                                    
+                                                    @category.CategoryName
+                                                    @foreach (var subcategory in Model)
+                                                    {
+                                                       if (subcategory.CategoryParentRef == category.CategoryID)
+                                                       {
+                                                           @:<a href="@Url.Action("Browse", "Search", new { id = subcategory.CategoryID, categoryName = subcategory.CategoryName })" style="padding-left: 20px;">
+                                                              
+                                                           @subcategory.CategoryName
+                                                        }
+                                                           
+                                                           
+                                                              
+                                                    }
+                                                </a>                                                
+                                            </li>                                                                         
+                                                                                  
+                                        }
+                                    </ul>
+                                </div>
+        </div>
+    </body>
+</html>
+

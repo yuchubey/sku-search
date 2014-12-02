@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>   
+        <link rel="stylesheet" href="/Content2/css/metro-bootstrap.css">
+        <link rel="stylesheet" href="/Content2/css/Site.css">
+        <script src="/Scripts/jquery-2.1.1.js"></script>
+        <script src="/Scripts/jquery-ui-1.8.20.js"></script>                
+        <script src="/Scripts/metro-treeview.js"></script> 
+        <script src="/Scripts/metro-hint.js"></script> 
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script> 
+        <script src="/Scripts/GoogleMapHelpers.js"></script>
+        <meta name="viewport" content="width=device-width" />
+        <title>@ViewBag.Title</title>        
+</head>
+<body">
+    
+    <div style="width: 100%">        
+        <nav class="navigation-bar dark">
+                <div class="navigation-bar-content">
+                    <a href="/" class="element"><span class="icon-grid-view"></span> Sku4You</a>
+                    <span class="element-divider"></span>
+
+                    <div class="element place-right">
+                        <a class="dropdown-toggle" href="#">
+                            <span class="icon-cog"></span>
+                        </a>                            
+                    </div>  
+                                          
+                        <button class="element image-button image-left place-right">
+                            Language: en                           
+                        </button>
+                    <span class="element-divider place-right"></span>
+
+                    <a href="/search" class="element place-right"><span class="icon-grid-view"></span>Search</a>
+                    <span class="element-divider place-right"></span>
+                    <a href="/" class="element place-right"><span class="icon-grid-view"></span>Home</a>
+                    <span class="element-divider place-right"></span>
+                    @*<span class="element-divider"></span>*@
+
+                    
+
+                    @*<div class="no-tablet-portrait">*@
+                        @*<span class="element-divider"></span>
+                        <a class="element brand" href="#"><span class="icon-spin"></span></a>
+                        <a class="element brand" href="#"><span class="icon-printer"></span></a>
+                        <span class="element-divider"></span>*@
+                        
+
+                        
+                    @*</div>*@
+                </div>
+            </nav>        
+    </div> 
+        			
+				@RenderBody()  
+</body>
+</html>

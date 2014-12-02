@@ -1,0 +1,12 @@
+E:\Yura\SkuSearch\SkuSearch.Business\bin\Release\SkuSearch.Business.dll.config
+E:\Yura\SkuSearch\SkuSearch.Business\bin\Release\SkuSearch.Business.dll
+E:\Yura\SkuSearch\SkuSearch.Business\bin\Release\SkuSearch.Business.pdb
+E:\Yura\SkuSearch\SkuSearch.Business\bin\Release\EntityFramework.dll
+E:\Yura\SkuSearch\SkuSearch.Business\bin\Release\EntityFramework.SqlServer.dll
+E:\Yura\SkuSearch\SkuSearch.Business\bin\Release\SkuSearch.DataAccess.dll
+E:\Yura\SkuSearch\SkuSearch.Business\bin\Release\SkuSearch.DataAccess.pdb
+E:\Yura\SkuSearch\SkuSearch.Business\bin\Release\EntityFramework.xml
+E:\Yura\SkuSearch\SkuSearch.Business\bin\Release\EntityFramework.SqlServer.xml
+E:\Yura\SkuSearch\SkuSearch.Business\obj\Release\SkuSearch.Business.csprojResolveAssemblyReference.cache
+E:\Yura\SkuSearch\SkuSearch.Business\obj\Release\SkuSearch.Business.dll
+E:\Yura\SkuSearch\SkuSearch.Business\obj\Release\SkuSearch.Business.pdb

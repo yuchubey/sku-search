@@ -1,0 +1,50 @@
+﻿@model Tuple<IEnumerable<SkuSearch.DataAccess.MultilanguageProperty>, IEnumerable<SkuSearch.DataAccess.Product>>
+
+<body class ="metro">
+    @{
+    ViewBag.Title = "Browse";
+ }
+@{
+        Layout = "~/Views/Shared/_LayoutPage1.cshtml"; 
+  } 
+
+    <div> 
+        <div class="searching-container"> 
+                @if (Model.Item2.Any() != null)
+            {     
+                <h2 style="float: right;">@Request.Params["categoryName"]</h2> 
+            } 
+                </div>
+            
+            @{Html.RenderAction("SearchingTextbox");}
+            
+                                          
+            
+               @* @using (Html.BeginForm())
+                 {
+                    <div class="element input-element">                                       
+                        <form >
+                                    <div class="input-control text" style="height:27px; width:auto">                                    
+                                        @Html.TextBox("SearchString","", new { placeholder = "Search..."})
+
+                                        <button class="btn-search"></button>                                        
+                                    </div>
+                         </form>
+                    </div>
+                 }        
+    
+                @foreach(var product in Model.Item1)
+                {
+                    foreach (var originalProduct in Model.Item2)
+                {
+                    if (product.ProductRef == originalProduct.ProductID)  
+                    {<ul><li>@Html.ActionLink(product.MultilanguagePropertyProductName, "Details", new { id = product.ProductRef})</li></ul>}
+                }
+                }*@
+                
+            
+
+    </div>
+    @{Html.RenderAction("CategoryMenu");}
+</body>
+

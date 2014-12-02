@@ -1,0 +1,1 @@
+E:\SkuSearch\SkuSearch.Web\obj\x86\Debug\SkuSearch.Web.csprojResolveAssemblyReference.cache

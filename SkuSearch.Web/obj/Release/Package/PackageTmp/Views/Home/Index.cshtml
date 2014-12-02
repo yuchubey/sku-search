@@ -1,0 +1,152 @@
+﻿@model Tuple<IEnumerable<SkuSearch.DataAccess.MultilanguageProperty>, IEnumerable<SkuSearch.DataAccess.Product>>
+
+@helper Truncate(string input, int length)
+{
+    if (input.Length <= length) 
+    { 
+        @input
+    } 
+    else 
+    { 
+        @input.Substring(0, length)<text>...</text>
+    }
+}
+
+<body class="metro">
+    
+    @{
+        ViewBag.Title = "Home";
+    }        
+
+     @{
+        Layout = "~/Views/Shared/_LayoutPage1.cshtml"; 
+      } 
+    
+
+    <h2 style="margin-left: 20px;"><b>Sku4You </b><sup>beta</sup></h2>
+
+    <div style="margin-left: 10px; width: 100%; display:inline-block;">
+    
+        <div style= "float: right; margin-right: 50px; margin-top: 70px;">
+                        <h1 style="width: 50%; margin: auto;">Freshly added</h1>
+                          <div id="product-list-container">                                
+                              <ul id="product-list">
+                                @foreach (var product in Model.Item1)
+                                {                                      
+                                    <li>
+                                    @foreach (var originalProduct in Model.Item2) 
+                                    {
+                                        
+                                        if (originalProduct.ProductID == product.ProductRef)
+                                        {
+                                            if (originalProduct.ProductImage != null)
+                                            { 
+                                              <div id="image-list-container">
+                                                  <a title="@product.MultilanguagePropertyProductName" href="@Url.Action("Details", "Search", new { id = product.ProductRef })">
+                                                        <img src="@Url.Content("/Content2/images/"+originalProduct.ProductImage)" />                                                        
+                                                  </div>
+                                                
+                                            }
+                                            else
+                                            {
+                                               <div id="image-list-container">
+                                                       <a title="@product.MultilanguagePropertyProductName" href="@Url.Action("Details", "Search", new { id = product.ProductRef })">
+                                                        <img src="@Url.Content("~/Content2/images/cart_product_default.png")" />
+                                                        </a>                                               
+                                                </div>
+                                            }                     
+                                        }
+                                    }
+                                       @Html.ActionLink(Truncate(product.MultilanguagePropertyProductName, 30).ToString(), "Details", "Search", new { id = product.ProductRef }, new { title = @product.MultilanguagePropertyProductName})                                        
+
+                                  </li>
+                                }
+                            </ul>
+                                  
+                          </div>
+                    </div>
+            <p id="demo">Click the button to get your coordinates:</p>
+
+        <button onclick="getLocation()">Get Location</button>
+
+        <script>
+            var x = document.getElementById("demo");
+
+            function getLocation() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(showPosition);
+                } else {
+                    x.innerHTML = "Geolocation is not supported by this browser.";
+                }
+            }
+
+            function showPosition(position) {
+                var textBox = document.getElementById("addressBox")
+                x.innerHTML = "Your location: " + '<input type="Text" id="addressBox" value="' + position.coords.latitude + "," + position.coords.longitude + '">';
+                var location = position.coords.latitude + "," + position.coords.longitude;
+
+            }
+        </script>
+
+            <div style= "width:auto; margin-left: 50px;">
+                 <h2>Map an Address</h2>
+            <form method="post">
+                <fieldset>
+                  <div>
+                    <label for="address">Address:</label>
+                    <input style="width: 328px" type="text" id="addressBox" name="addressBox" value="@Request["addressBox"]" />
+                    <input type="submit" onclick="showPosition" value="Map It!" />
+                   </div>
+                </fieldset>
+            </form>   
+    
+     
+                @Maps.GetGoogleHtml(Request.Form["addressBox"],       
+                    width: "400",
+                    height: "400")
+            </div>
+
+             
+    </div>
+
+   
+    <div id="FooterWrapper">
+			<div id="Footer">
+				Sku4You © 2014 Inherent Simplicity Baltic. All rights reserved.
+			</div>
+		</div> 
+
+    
+
+     
+   
+    
+
+    @*<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript">
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (p) {
+            var LatLng = new google.maps.LatLng(p.coords.latitude, p.coords.longitude);
+            var mapOptions = {
+                center: LatLng,
+                zoom: 13,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+            var marker = new google.maps.Marker({
+                position: LatLng,
+                map: map,
+                title: "<div style = 'height:60px;width:200px'><b>Your location:</b><br />Latitude: " + p.coords.latitude + "<br />Longitude: " + p.coords.longitude
+            });
+            google.maps.event.addListener(marker, "click", function (e) {
+                var infoWindow = new google.maps.InfoWindow();
+                infoWindow.setContent(marker.title);
+                infoWindow.open(map, marker);
+            });
+        });
+    } else {
+        alert('Geo Location feature is not supported in this browser.');
+    }
+</script>*@
+
+</body>

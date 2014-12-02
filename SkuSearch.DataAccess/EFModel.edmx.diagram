@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4bccf90e72b14941b05cbd857ab75a97" Name="Diagram1">
+        <EntityTypeShape EntityType="SkuSearchDBModel.AdditionalProperty" Width="1.5" PointX="8.3054062837294325" PointY="13.411684131907153" />
+        <EntityTypeShape EntityType="SkuSearchDBModel.Category" Width="1.5" PointX="7.4014034752740541" PointY="13.104490092538525" />
+        <EntityTypeShape EntityType="SkuSearchDBModel.CategoryTranslated" Width="1.5" PointX="4.1158783790263715" PointY="21.515094916110439" />
+        <EntityTypeShape EntityType="SkuSearchDBModel.Company" Width="1.5" PointX="4.009099274877971" PointY="31.333992704438973" />
+        <EntityTypeShape EntityType="SkuSearchDBModel.Company_StockLocation" Width="1.5" PointX="9.2258214676872932" PointY="13.972382775495007" />
+        <EntityTypeShape EntityType="SkuSearchDBModel.CompanyTranslated" Width="1.5" PointX="1.8575639267720114" PointY="15.498365692560732" />
+        <EntityTypeShape EntityType="SkuSearchDBModel.Employee" Width="1.5" PointX="6.514998237842228" PointY="3.8192446845673231" />
+        <EntityTypeShape EntityType="SkuSearchDBModel.MultilanguageProperty" Width="1.5" PointX="5.5517357706798878" PointY="23.923512589150814" />
+        <EntityTypeShape EntityType="SkuSearchDBModel.Product" Width="1.5" PointX="9.6730698354882509" PointY="23.15516197269557" />
+        <EntityTypeShape EntityType="SkuSearchDBModel.ProductStorage" Width="1.5" PointX="2.6175489251583577" PointY="21.509126926543715" />
+        <EntityTypeShape EntityType="SkuSearchDBModel.StockLocation" Width="1.5" PointX="10.623901699960186" PointY="17.886381336434923" />
+        <EntityTypeShape EntityType="SkuSearchDBModel.StockLocationTranslated" Width="1.5" PointX="3.3528711178120556" PointY="8.0000819601118938" />
+        <EntityTypeShape EntityType="SkuSearchDBModel.sysdiagrams" Width="1.5" PointX="3.11392747755811" PointY="24.9924459424766" />
+        <EntityTypeShape EntityType="SkuSearchDBModel.Translation" Width="1.5" PointX="10.322313419693295" PointY="2.3976944547135823" />
+        <EntityTypeShape EntityType="SkuSearchDBModel.User" Width="1.5" PointX="5.0529505000696284" PointY="17.525334440882009" />
+        <EntityTypeShape EntityType="SkuSearchDBModel.WorkingHours" Width="1.5" PointX="3.1203229814396813" PointY="19.236175680177368" />
+        <EntityTypeShape EntityType="SkuSearchDBModel.WorldLanguage" Width="1.5" PointX="8.1442357470021758" PointY="8.5135980437107381" />
+        <AssociationConnector Association="SkuSearchDBModel.FK_AdditionalProperty_MultilanguageProperty" />
+        <AssociationConnector Association="SkuSearchDBModel.FK_CategoryTranslated_Category" />
+        <AssociationConnector Association="SkuSearchDBModel.FK_Product_Category" />
+        <AssociationConnector Association="SkuSearchDBModel.FK_MultilanguageProperty_WorldLanguage" />
+        <AssociationConnector Association="SkuSearchDBModel.FK_StockLocationTranslated_WorldLanguage" />
+        <AssociationConnector Association="SkuSearchDBModel.FK_Translation_WorldLanguage" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

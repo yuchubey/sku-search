@@ -1,0 +1,162 @@
+﻿@model Tuple<IEnumerable<SkuSearch.DataAccess.MultilanguageProperty>, IEnumerable<SkuSearch.DataAccess.Product>>
+
+@helper Truncate(string input, int length)
+{
+    if (input.Length <= length) 
+    { 
+        @input
+    } 
+    else 
+    { 
+        @input.Substring(0, length)<text>...</text>
+    }
+}
+
+<body class="metro">
+    
+    @{
+        ViewBag.Title = "Home";
+    }        
+
+     @{
+        Layout = "~/Views/Shared/_LayoutPage1.cshtml";        
+      } 
+    
+
+    <h2 style="margin-left: 20px;"><b>Sku4You </b><sup>beta</sup></h2>
+
+    <div style="margin-left: 10px; width: 100%; display:inline-block">
+    
+        <div style= "float: right; margin-right: 50px; margin-top: 70px;">
+                        <h1 style="width: 50%; margin: auto;">Freshly added</h1>
+                          <div id="product-list-container">                                
+                              <ul id="product-list">
+                                @foreach (var product in Model.Item1)
+                                {                                      
+                                    <li>
+                                    @foreach (var originalProduct in Model.Item2) 
+                                    {                                        
+                                        if (originalProduct.ProductID == product.ProductRef)
+                                        {
+                                            if (originalProduct.ProductImage != null)
+                                            { 
+                                              <div id="image-list-container">
+                                                  <a title="@product.MultilanguagePropertyProductName" href="@Url.Action("Details", "Search", new { id = product.ProductRef })">
+                                                        <img src="@Url.Content("/Content2/images/"+originalProduct.ProductImage)"/></a>                                                        
+                                                  </div>
+                                                
+                                            }
+                                            else
+                                            {
+                                               <div id="image-list-container">
+                                                       <a title="@product.MultilanguagePropertyProductName" href="@Url.Action("Details", "Search", new { id = product.ProductRef })">
+                                                        <img src="@Url.Content("~/Content2/images/cart_product_default.png")"/></a>                                                                                                       
+                                                </div>
+                                            }                     
+                                        }
+                                    }
+                                       @Html.ActionLink(Truncate(product.MultilanguagePropertyProductName, 30).ToString(), "Details", "Search", new { id = product.ProductRef }, new { title = @product.MultilanguagePropertyProductName})                                        
+
+                                  </li>
+                                }
+                            </ul>
+                                  
+                          </div>
+                    </div>
+            <p id="demo">Click the button to get your coordinates:</p>
+
+        <button onclick="getLocation()">Get Location</button>
+
+        <script>
+            var x = document.getElementById("demo");
+
+            function getLocation() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(showPosition);
+                } else {
+                    x.innerHTML = "Geolocation is not supported by this browser.";
+                }
+            }
+
+            function showPosition(position) {
+                var textBox = document.getElementById("addressBox")
+                x.innerHTML = "Your location: " + '<input type="Text" id="locationBox" value="' + position.coords.latitude + "," + position.coords.longitude + '">';
+                var location = position.coords.latitude + "," + position.coords.longitude;
+
+            }
+        </script>
+
+        @*Use the Google Geocoding service to get information about the user-entered address*@
+       
+
+            <div style= "width:auto; margin-left: 50px;">
+                 <h2>Map an Address</h2>
+            <form method="post">
+                <fieldset>
+                  <div>
+                    <label for="address">Address:</label>
+                    <input style="width: 328px" type="text" name="addressBox" value="@Request["addressBox"]" />
+                    <input type="submit" onclick="showPosition" value="Map It!" />
+                   </div>
+                </fieldset>
+            </form>
+                
+                
+    
+      @{var url = String.Format("http://maps.google.com/maps/api/geocode/xml?address={0}&sensor=false", Server.UrlEncode(Request.Form["addressBox"]));
+
+        // Load the XML into an XElement object
+        var results = System.Xml.Linq.XElement.Load(url);
+        // Determine how many elements exist
+        var resultCount = results.Elements("result").Count();  
+        // How many results did we get back?
+        if (resultCount == 0)
+        {
+            <h>Cannot find matches</h>
+        }
+        //else if (resultCount == 1)
+        //{
+        //    // Send the user to the results page
+        //    Server.Transfer(
+        //}         
+        
+        else if (resultCount >= 1)
+        {                   
+            //Multiple results
+            var matches = from result in results.Elements("result")
+                          let formatted_address = result.Element("formatted_address").Value
+                          select formatted_address;
+
+            <table class="content-wrapper">
+                Did you mean
+                @foreach (var item in matches)
+                {
+                <tr>                    
+                    <th>
+                         @Html.ActionLink(item, "Index", "StockLocations", new { latitude = results.Element("result").Element("geometry").Element("location").Element("lat").Value, longitude = results.Element("result").Element("geometry").Element("location").Element("lng").Value, myGeolocation = results.Element("result").Element("formatted_address").Value}, null)
+                    </th>
+                </tr>
+                }
+            </table>
+        }
+         
+          
+        }
+            <div style="margin-top:10px">
+                @Maps.GetGoogleHtml(Request.Form["addressBox"],
+                        width: "400",
+                        height: "400"
+                        ); 
+                </div>        
+            </div>
+
+             
+    </div>
+
+   
+    <div id="FooterWrapper">
+			<div id="Footer">
+				Sku4You © 2014 Inherent Simplicity Baltic. All rights reserved.
+			</div>
+		</div>
+</body>

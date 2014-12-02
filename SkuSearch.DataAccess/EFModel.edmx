@@ -1,0 +1,848 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SkuSearchDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="SkuSearchDBModelStoreContainer">
+          <EntitySet Name="AdditionalProperty" EntityType="SkuSearchDBModel.Store.AdditionalProperty" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Category" EntityType="SkuSearchDBModel.Store.Category" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CategoryTranslated" EntityType="SkuSearchDBModel.Store.CategoryTranslated" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Company" EntityType="SkuSearchDBModel.Store.Company" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Company_StockLocation" EntityType="SkuSearchDBModel.Store.Company_StockLocation" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CompanyTranslated" EntityType="SkuSearchDBModel.Store.CompanyTranslated" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Employee" EntityType="SkuSearchDBModel.Store.Employee" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MultilanguageProperty" EntityType="SkuSearchDBModel.Store.MultilanguageProperty" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Product" EntityType="SkuSearchDBModel.Store.Product" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ProductStorage" EntityType="SkuSearchDBModel.Store.ProductStorage" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="StockLocation" EntityType="SkuSearchDBModel.Store.StockLocation" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="StockLocationTranslated" EntityType="SkuSearchDBModel.Store.StockLocationTranslated" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysdiagrams" EntityType="SkuSearchDBModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Translation" EntityType="SkuSearchDBModel.Store.Translation" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="User" EntityType="SkuSearchDBModel.Store.User" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="WorkingHours" EntityType="SkuSearchDBModel.Store.WorkingHours" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="WorldLanguage" EntityType="SkuSearchDBModel.Store.WorldLanguage" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_AdditionalProperty_MultilanguageProperty" Association="SkuSearchDBModel.Store.FK_AdditionalProperty_MultilanguageProperty">
+            <End Role="MultilanguageProperty" EntitySet="MultilanguageProperty" />
+            <End Role="AdditionalProperty" EntitySet="AdditionalProperty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoryTranslated_Category" Association="SkuSearchDBModel.Store.FK_CategoryTranslated_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="CategoryTranslated" EntitySet="CategoryTranslated" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MultilanguageProperty_WorldLanguage" Association="SkuSearchDBModel.Store.FK_MultilanguageProperty_WorldLanguage">
+            <End Role="WorldLanguage" EntitySet="WorldLanguage" />
+            <End Role="MultilanguageProperty" EntitySet="MultilanguageProperty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Category" Association="SkuSearchDBModel.Store.FK_Product_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockLocationTranslated_WorldLanguage" Association="SkuSearchDBModel.Store.FK_StockLocationTranslated_WorldLanguage">
+            <End Role="WorldLanguage" EntitySet="WorldLanguage" />
+            <End Role="StockLocationTranslated" EntitySet="StockLocationTranslated" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Translation_WorldLanguage" Association="SkuSearchDBModel.Store.FK_Translation_WorldLanguage">
+            <End Role="WorldLanguage" EntitySet="WorldLanguage" />
+            <End Role="Translation" EntitySet="Translation" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AdditionalProperty">
+          <Key>
+            <PropertyRef Name="AdditionalPropertyID" />
+          </Key>
+          <Property Name="AdditionalPropertyID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MultilanguagePropertyRef" Type="int" Nullable="false" />
+          <Property Name="AdditionalPropertyName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="AdditionalPropertyValue" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="AdditionalPropertyImportance" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryParentRef" Type="int" />
+          <Property Name="CategoryName" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CategoryTranslated">
+          <Key>
+            <PropertyRef Name="CategoryTranslatedID" />
+          </Key>
+          <Property Name="CategoryTranslatedID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryRef" Type="int" Nullable="false" />
+          <Property Name="LanguageRef" Type="nvarchar" Nullable="false" MaxLength="2" />
+          <Property Name="CategoryTranslatedName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+          </Key>
+          <Property Name="CompanyID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyNameEn" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="CompanyNameNative" Type="nvarchar" MaxLength="100" />
+          <Property Name="CompanyCountry" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyLogo" Type="nvarchar" MaxLength="200" />
+          <Property Name="CompanyUrl" Type="nvarchar" MaxLength="250" />
+          <Property Name="CompanyAddress1" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyAddess2" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyTown" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyCounty" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyPostcode" Type="nvarchar" MaxLength="10" />
+          <Property Name="CompanyLocationCountry" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyLatitude" Type="decimal" Precision="10" Scale="7" />
+          <Property Name="CompanyLongitude" Type="decimal" Precision="10" Scale="7" />
+        </EntityType>
+        <EntityType Name="Company_StockLocation">
+          <Key>
+            <PropertyRef Name="CompanyRef" />
+            <PropertyRef Name="StockLocationRef" />
+          </Key>
+          <Property Name="CompanyRef" Type="int" Nullable="false" />
+          <Property Name="StockLocationRef" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CompanyTranslated">
+          <Key>
+            <PropertyRef Name="CompanyTranslatedID" />
+          </Key>
+          <Property Name="CompanyTranslatedID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyRef" Type="int" Nullable="false" />
+          <Property Name="LanguageRef" Type="nvarchar" Nullable="false" MaxLength="2" />
+          <Property Name="CompanyTranslatedName" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserRef" Type="int" Nullable="false" />
+          <Property Name="CompanyRef" Type="int" Nullable="false" />
+          <Property Name="EmployeeType" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MultilanguageProperty">
+          <Key>
+            <PropertyRef Name="MultilanguagePropertyID" />
+          </Key>
+          <Property Name="MultilanguagePropertyID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="WorldLanguageRef" Type="varchar" Nullable="false" MaxLength="2" />
+          <Property Name="ProductRef" Type="int" Nullable="false" />
+          <Property Name="MultilanguagePropertyProductName" Type="text" Nullable="false" />
+          <Property Name="MultilanguagePropertyProductDescription" Type="text" />
+          <Property Name="MultilanguagePropertyProductURL" Type="text" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyRef" Type="int" Nullable="false" />
+          <Property Name="CategoryRef" Type="int" />
+          <Property Name="ProductBarCode" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ProductAdditionalCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProductImage" Type="text" />
+        </EntityType>
+        <EntityType Name="ProductStorage">
+          <Key>
+            <PropertyRef Name="ProductStorageID" />
+          </Key>
+          <Property Name="ProductStorageID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProductRef" Type="int" Nullable="false" />
+          <Property Name="StockLocationRef" Type="int" Nullable="false" />
+          <Property Name="ProductStorageLocationStatus" Type="nchar" MaxLength="10" />
+          <Property Name="ProductStorageDeliveryTime" Type="time" Precision="4" />
+          <Property Name="ProductStorageMaxShownQuantity" Type="int" />
+          <Property Name="ProductStorageMinShownQuantity" Type="int" />
+          <Property Name="ProductStorageQuantityLeft" Type="int" />
+        </EntityType>
+        <EntityType Name="StockLocation">
+          <Key>
+            <PropertyRef Name="StockLocationID" />
+          </Key>
+          <Property Name="StockLocationID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="StockLocationName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="StockLocationOwnerType" Type="int" Nullable="false" />
+          <Property Name="StockLocationDescription" Type="text" />
+          <Property Name="StockLocationWorkingHoursRef" Type="int" />
+          <Property Name="StockLocationPhone" Type="nvarchar" MaxLength="100" />
+          <Property Name="StockLocationEmail" Type="nvarchar" MaxLength="250" />
+          <Property Name="StockLocationUrl" Type="nvarchar" MaxLength="250" />
+          <Property Name="StockLocationAddress1" Type="nvarchar" MaxLength="50" />
+          <Property Name="StockLocationAddess2" Type="nvarchar" MaxLength="50" />
+          <Property Name="StockLocationTown" Type="nvarchar" MaxLength="50" />
+          <Property Name="StockLocationCounty" Type="nvarchar" MaxLength="50" />
+          <Property Name="StockLocationPostcode" Type="nvarchar" MaxLength="10" />
+          <Property Name="StockLocationCountry" Type="nvarchar" MaxLength="50" />
+          <Property Name="StockLocationLatitude" Type="decimal" Nullable="false" Precision="9" Scale="6" />
+          <Property Name="StockLocationLongitude" Type="decimal" Nullable="false" Precision="9" Scale="6" />
+        </EntityType>
+        <EntityType Name="StockLocationTranslated">
+          <Key>
+            <PropertyRef Name="StockLocationTraslatedID" />
+          </Key>
+          <Property Name="StockLocationTraslatedID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="StockLocationRef" Type="int" Nullable="false" />
+          <Property Name="WorldLanguageRef" Type="varchar" Nullable="false" MaxLength="2" />
+          <Property Name="StockLocationTraslatedName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Translation">
+          <Key>
+            <PropertyRef Name="TranslationID" />
+          </Key>
+          <Property Name="TranslationID" Type="int" Nullable="false" />
+          <Property Name="WorldLanguageRef" Type="varchar" Nullable="false" MaxLength="2" />
+          <Property Name="TranslationKey" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="TranslationValue" Type="nvarchar" Nullable="false" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="UserEmail" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="UserPassword" Type="nvarchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="WorkingHours">
+          <Key>
+            <PropertyRef Name="StockLocationRef" />
+          </Key>
+          <Property Name="StockLocationRef" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="WorkingHoursDayOfWeek" Type="int" />
+          <Property Name="WorkingHoursOpenTime" Type="time" />
+          <Property Name="WorkingHoursCloseTime" Type="time" />
+          <Property Name="WorkingHoursLunchTimeBegin" Type="time" />
+          <Property Name="WorkingHoursLunchTimeEnd" Type="time" />
+        </EntityType>
+        <EntityType Name="WorldLanguage">
+          <Key>
+            <PropertyRef Name="WorldLanguageID" />
+          </Key>
+          <Property Name="WorldLanguageID" Type="varchar" Nullable="false" MaxLength="2" />
+          <Property Name="WorldLanguageName" Type="varchar" Nullable="false" MaxLength="64" />
+        </EntityType>
+        <Association Name="FK_AdditionalProperty_MultilanguageProperty">
+          <End Role="MultilanguageProperty" Type="SkuSearchDBModel.Store.MultilanguageProperty" Multiplicity="1" />
+          <End Role="AdditionalProperty" Type="SkuSearchDBModel.Store.AdditionalProperty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MultilanguageProperty">
+              <PropertyRef Name="MultilanguagePropertyID" />
+            </Principal>
+            <Dependent Role="AdditionalProperty">
+              <PropertyRef Name="MultilanguagePropertyRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoryTranslated_Category">
+          <End Role="Category" Type="SkuSearchDBModel.Store.Category" Multiplicity="1" />
+          <End Role="CategoryTranslated" Type="SkuSearchDBModel.Store.CategoryTranslated" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="CategoryTranslated">
+              <PropertyRef Name="CategoryRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MultilanguageProperty_WorldLanguage">
+          <End Role="WorldLanguage" Type="SkuSearchDBModel.Store.WorldLanguage" Multiplicity="1" />
+          <End Role="MultilanguageProperty" Type="SkuSearchDBModel.Store.MultilanguageProperty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorldLanguage">
+              <PropertyRef Name="WorldLanguageID" />
+            </Principal>
+            <Dependent Role="MultilanguageProperty">
+              <PropertyRef Name="WorldLanguageRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Category">
+          <End Role="Category" Type="SkuSearchDBModel.Store.Category" Multiplicity="0..1" />
+          <End Role="Product" Type="SkuSearchDBModel.Store.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CategoryRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockLocationTranslated_WorldLanguage">
+          <End Role="WorldLanguage" Type="SkuSearchDBModel.Store.WorldLanguage" Multiplicity="1" />
+          <End Role="StockLocationTranslated" Type="SkuSearchDBModel.Store.StockLocationTranslated" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorldLanguage">
+              <PropertyRef Name="WorldLanguageID" />
+            </Principal>
+            <Dependent Role="StockLocationTranslated">
+              <PropertyRef Name="WorldLanguageRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Translation_WorldLanguage">
+          <End Role="WorldLanguage" Type="SkuSearchDBModel.Store.WorldLanguage" Multiplicity="1" />
+          <End Role="Translation" Type="SkuSearchDBModel.Store.Translation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorldLanguage">
+              <PropertyRef Name="WorldLanguageID" />
+            </Principal>
+            <Dependent Role="Translation">
+              <PropertyRef Name="WorldLanguageRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SkuSearchDBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SkuSearchDBEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="AdditionalProperty" EntityType="SkuSearchDBModel.AdditionalProperty" />
+          <EntitySet Name="Category" EntityType="SkuSearchDBModel.Category" />
+          <EntitySet Name="CategoryTranslated" EntityType="SkuSearchDBModel.CategoryTranslated" />
+          <EntitySet Name="Company" EntityType="SkuSearchDBModel.Company" />
+          <EntitySet Name="Company_StockLocation" EntityType="SkuSearchDBModel.Company_StockLocation" />
+          <EntitySet Name="CompanyTranslated" EntityType="SkuSearchDBModel.CompanyTranslated" />
+          <EntitySet Name="Employee" EntityType="SkuSearchDBModel.Employee" />
+          <EntitySet Name="MultilanguageProperty" EntityType="SkuSearchDBModel.MultilanguageProperty" />
+          <EntitySet Name="Product" EntityType="SkuSearchDBModel.Product" />
+          <EntitySet Name="ProductStorage" EntityType="SkuSearchDBModel.ProductStorage" />
+          <EntitySet Name="StockLocation" EntityType="SkuSearchDBModel.StockLocation" />
+          <EntitySet Name="StockLocationTranslated" EntityType="SkuSearchDBModel.StockLocationTranslated" />
+          <EntitySet Name="sysdiagrams" EntityType="SkuSearchDBModel.sysdiagrams" />
+          <EntitySet Name="Translation" EntityType="SkuSearchDBModel.Translation" />
+          <EntitySet Name="User" EntityType="SkuSearchDBModel.User" />
+          <EntitySet Name="WorkingHours" EntityType="SkuSearchDBModel.WorkingHours" />
+          <EntitySet Name="WorldLanguage" EntityType="SkuSearchDBModel.WorldLanguage" />
+          <AssociationSet Name="FK_AdditionalProperty_MultilanguageProperty" Association="SkuSearchDBModel.FK_AdditionalProperty_MultilanguageProperty">
+            <End Role="MultilanguageProperty" EntitySet="MultilanguageProperty" />
+            <End Role="AdditionalProperty" EntitySet="AdditionalProperty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoryTranslated_Category" Association="SkuSearchDBModel.FK_CategoryTranslated_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="CategoryTranslated" EntitySet="CategoryTranslated" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Category" Association="SkuSearchDBModel.FK_Product_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MultilanguageProperty_WorldLanguage" Association="SkuSearchDBModel.FK_MultilanguageProperty_WorldLanguage">
+            <End Role="WorldLanguage" EntitySet="WorldLanguage" />
+            <End Role="MultilanguageProperty" EntitySet="MultilanguageProperty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockLocationTranslated_WorldLanguage" Association="SkuSearchDBModel.FK_StockLocationTranslated_WorldLanguage">
+            <End Role="WorldLanguage" EntitySet="WorldLanguage" />
+            <End Role="StockLocationTranslated" EntitySet="StockLocationTranslated" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Translation_WorldLanguage" Association="SkuSearchDBModel.FK_Translation_WorldLanguage">
+            <End Role="WorldLanguage" EntitySet="WorldLanguage" />
+            <End Role="Translation" EntitySet="Translation" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AdditionalProperty">
+          <Key>
+            <PropertyRef Name="AdditionalPropertyID" />
+          </Key>
+          <Property Type="Int32" Name="AdditionalPropertyID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="MultilanguagePropertyRef" Nullable="false" />
+          <Property Type="String" Name="AdditionalPropertyName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AdditionalPropertyValue" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="AdditionalPropertyImportance" Nullable="false" />
+          <NavigationProperty Name="MultilanguageProperty" Relationship="SkuSearchDBModel.FK_AdditionalProperty_MultilanguageProperty" FromRole="AdditionalProperty" ToRole="MultilanguageProperty" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Type="Int32" Name="CategoryID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="CategoryParentRef" />
+          <Property Type="String" Name="CategoryName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CategoryTranslated" Relationship="SkuSearchDBModel.FK_CategoryTranslated_Category" FromRole="Category" ToRole="CategoryTranslated" />
+          <NavigationProperty Name="Product" Relationship="SkuSearchDBModel.FK_Product_Category" FromRole="Category" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="CategoryTranslated">
+          <Key>
+            <PropertyRef Name="CategoryTranslatedID" />
+          </Key>
+          <Property Type="Int32" Name="CategoryTranslatedID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="CategoryRef" Nullable="false" />
+          <Property Type="String" Name="LanguageRef" Nullable="false" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CategoryTranslatedName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Category" Relationship="SkuSearchDBModel.FK_CategoryTranslated_Category" FromRole="CategoryTranslated" ToRole="Category" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+          </Key>
+          <Property Type="Int32" Name="CompanyID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="CompanyNameEn" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CompanyNameNative" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CompanyCountry" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CompanyCode" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CompanyLogo" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CompanyUrl" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CompanyAddress1" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CompanyAddess2" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CompanyTown" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CompanyCounty" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CompanyPostcode" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CompanyLocationCountry" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="CompanyLatitude" Precision="10" Scale="7" />
+          <Property Type="Decimal" Name="CompanyLongitude" Precision="10" Scale="7" />
+        </EntityType>
+        <EntityType Name="Company_StockLocation">
+          <Key>
+            <PropertyRef Name="CompanyRef" />
+            <PropertyRef Name="StockLocationRef" />
+          </Key>
+          <Property Type="Int32" Name="CompanyRef" Nullable="false" />
+          <Property Type="Int32" Name="StockLocationRef" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CompanyTranslated">
+          <Key>
+            <PropertyRef Name="CompanyTranslatedID" />
+          </Key>
+          <Property Type="Int32" Name="CompanyTranslatedID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="CompanyRef" Nullable="false" />
+          <Property Type="String" Name="LanguageRef" Nullable="false" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CompanyTranslatedName" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Type="Int32" Name="EmployeeID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="UserRef" Nullable="false" />
+          <Property Type="Int32" Name="CompanyRef" Nullable="false" />
+          <Property Type="Int32" Name="EmployeeType" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MultilanguageProperty">
+          <Key>
+            <PropertyRef Name="MultilanguagePropertyID" />
+          </Key>
+          <Property Type="Int32" Name="MultilanguagePropertyID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="WorldLanguageRef" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="ProductRef" Nullable="false" />
+          <Property Type="String" Name="MultilanguagePropertyProductName" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MultilanguagePropertyProductDescription" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MultilanguagePropertyProductURL" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AdditionalProperty" Relationship="SkuSearchDBModel.FK_AdditionalProperty_MultilanguageProperty" FromRole="MultilanguageProperty" ToRole="AdditionalProperty" />
+          <NavigationProperty Name="WorldLanguage" Relationship="SkuSearchDBModel.FK_MultilanguageProperty_WorldLanguage" FromRole="MultilanguageProperty" ToRole="WorldLanguage" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Type="Int32" Name="ProductID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="CompanyRef" Nullable="false" />
+          <Property Type="Int32" Name="CategoryRef" />
+          <Property Type="String" Name="ProductBarCode" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ProductAdditionalCode" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ProductImage" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Category" Relationship="SkuSearchDBModel.FK_Product_Category" FromRole="Product" ToRole="Category" />
+        </EntityType>
+        <EntityType Name="ProductStorage">
+          <Key>
+            <PropertyRef Name="ProductStorageID" />
+          </Key>
+          <Property Type="Int32" Name="ProductStorageID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ProductRef" Nullable="false" />
+          <Property Type="Int32" Name="StockLocationRef" Nullable="false" />
+          <Property Type="String" Name="ProductStorageLocationStatus" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="Time" Name="ProductStorageDeliveryTime" Precision="4" />
+          <Property Type="Int32" Name="ProductStorageMaxShownQuantity" />
+          <Property Type="Int32" Name="ProductStorageMinShownQuantity" />
+          <Property Type="Int32" Name="ProductStorageQuantityLeft" />
+        </EntityType>
+        <EntityType Name="StockLocation">
+          <Key>
+            <PropertyRef Name="StockLocationID" />
+          </Key>
+          <Property Type="Int32" Name="StockLocationID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="StockLocationName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="StockLocationOwnerType" Nullable="false" />
+          <Property Type="String" Name="StockLocationDescription" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="StockLocationWorkingHoursRef" />
+          <Property Type="String" Name="StockLocationPhone" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="StockLocationEmail" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="StockLocationUrl" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="StockLocationAddress1" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="StockLocationAddess2" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="StockLocationTown" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="StockLocationCounty" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="StockLocationPostcode" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="StockLocationCountry" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="StockLocationLatitude" Nullable="false" Precision="9" Scale="6" />
+          <Property Type="Decimal" Name="StockLocationLongitude" Nullable="false" Precision="9" Scale="6" />
+        </EntityType>
+        <EntityType Name="StockLocationTranslated">
+          <Key>
+            <PropertyRef Name="StockLocationTraslatedID" />
+          </Key>
+          <Property Type="Int32" Name="StockLocationTraslatedID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="StockLocationRef" Nullable="false" />
+          <Property Type="String" Name="WorldLanguageRef" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="StockLocationTraslatedName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="WorldLanguage" Relationship="SkuSearchDBModel.FK_StockLocationTranslated_WorldLanguage" FromRole="StockLocationTranslated" ToRole="WorldLanguage" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Type="String" Name="name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="principal_id" Nullable="false" />
+          <Property Type="Int32" Name="diagram_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="version" />
+          <Property Type="Binary" Name="definition" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Translation">
+          <Key>
+            <PropertyRef Name="TranslationID" />
+          </Key>
+          <Property Type="Int32" Name="TranslationID" Nullable="false" />
+          <Property Type="String" Name="WorldLanguageRef" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TranslationKey" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TranslationValue" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="WorldLanguage" Relationship="SkuSearchDBModel.FK_Translation_WorldLanguage" FromRole="Translation" ToRole="WorldLanguage" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Type="Int32" Name="UserID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="UserEmail" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="UserPassword" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="WorkingHours">
+          <Key>
+            <PropertyRef Name="StockLocationRef" />
+          </Key>
+          <Property Type="Int32" Name="StockLocationRef" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="WorkingHoursDayOfWeek" />
+          <Property Type="Time" Name="WorkingHoursOpenTime" Precision="7" />
+          <Property Type="Time" Name="WorkingHoursCloseTime" Precision="7" />
+          <Property Type="Time" Name="WorkingHoursLunchTimeBegin" Precision="7" />
+          <Property Type="Time" Name="WorkingHoursLunchTimeEnd" Precision="7" />
+        </EntityType>
+        <EntityType Name="WorldLanguage">
+          <Key>
+            <PropertyRef Name="WorldLanguageID" />
+          </Key>
+          <Property Type="String" Name="WorldLanguageID" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="WorldLanguageName" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MultilanguageProperty" Relationship="SkuSearchDBModel.FK_MultilanguageProperty_WorldLanguage" FromRole="WorldLanguage" ToRole="MultilanguageProperty" />
+          <NavigationProperty Name="StockLocationTranslated" Relationship="SkuSearchDBModel.FK_StockLocationTranslated_WorldLanguage" FromRole="WorldLanguage" ToRole="StockLocationTranslated" />
+          <NavigationProperty Name="Translation" Relationship="SkuSearchDBModel.FK_Translation_WorldLanguage" FromRole="WorldLanguage" ToRole="Translation" />
+        </EntityType>
+        <Association Name="FK_AdditionalProperty_MultilanguageProperty">
+          <End Type="SkuSearchDBModel.MultilanguageProperty" Role="MultilanguageProperty" Multiplicity="1" />
+          <End Type="SkuSearchDBModel.AdditionalProperty" Role="AdditionalProperty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MultilanguageProperty">
+              <PropertyRef Name="MultilanguagePropertyID" />
+            </Principal>
+            <Dependent Role="AdditionalProperty">
+              <PropertyRef Name="MultilanguagePropertyRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoryTranslated_Category">
+          <End Type="SkuSearchDBModel.Category" Role="Category" Multiplicity="1" />
+          <End Type="SkuSearchDBModel.CategoryTranslated" Role="CategoryTranslated" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="CategoryTranslated">
+              <PropertyRef Name="CategoryRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Category">
+          <End Type="SkuSearchDBModel.Category" Role="Category" Multiplicity="0..1" />
+          <End Type="SkuSearchDBModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CategoryRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MultilanguageProperty_WorldLanguage">
+          <End Type="SkuSearchDBModel.WorldLanguage" Role="WorldLanguage" Multiplicity="1" />
+          <End Type="SkuSearchDBModel.MultilanguageProperty" Role="MultilanguageProperty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorldLanguage">
+              <PropertyRef Name="WorldLanguageID" />
+            </Principal>
+            <Dependent Role="MultilanguageProperty">
+              <PropertyRef Name="WorldLanguageRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockLocationTranslated_WorldLanguage">
+          <End Type="SkuSearchDBModel.WorldLanguage" Role="WorldLanguage" Multiplicity="1" />
+          <End Type="SkuSearchDBModel.StockLocationTranslated" Role="StockLocationTranslated" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorldLanguage">
+              <PropertyRef Name="WorldLanguageID" />
+            </Principal>
+            <Dependent Role="StockLocationTranslated">
+              <PropertyRef Name="WorldLanguageRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Translation_WorldLanguage">
+          <End Type="SkuSearchDBModel.WorldLanguage" Role="WorldLanguage" Multiplicity="1" />
+          <End Type="SkuSearchDBModel.Translation" Role="Translation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorldLanguage">
+              <PropertyRef Name="WorldLanguageID" />
+            </Principal>
+            <Dependent Role="Translation">
+              <PropertyRef Name="WorldLanguageRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SkuSearchDBModelStoreContainer" CdmEntityContainer="SkuSearchDBEntities">
+          <EntitySetMapping Name="AdditionalProperty">
+            <EntityTypeMapping TypeName="SkuSearchDBModel.AdditionalProperty">
+              <MappingFragment StoreEntitySet="AdditionalProperty">
+                <ScalarProperty Name="AdditionalPropertyImportance" ColumnName="AdditionalPropertyImportance" />
+                <ScalarProperty Name="AdditionalPropertyValue" ColumnName="AdditionalPropertyValue" />
+                <ScalarProperty Name="AdditionalPropertyName" ColumnName="AdditionalPropertyName" />
+                <ScalarProperty Name="MultilanguagePropertyRef" ColumnName="MultilanguagePropertyRef" />
+                <ScalarProperty Name="AdditionalPropertyID" ColumnName="AdditionalPropertyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Category">
+            <EntityTypeMapping TypeName="SkuSearchDBModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryParentRef" ColumnName="CategoryParentRef" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CategoryTranslated">
+            <EntityTypeMapping TypeName="SkuSearchDBModel.CategoryTranslated">
+              <MappingFragment StoreEntitySet="CategoryTranslated">
+                <ScalarProperty Name="CategoryTranslatedName" ColumnName="CategoryTranslatedName" />
+                <ScalarProperty Name="LanguageRef" ColumnName="LanguageRef" />
+                <ScalarProperty Name="CategoryRef" ColumnName="CategoryRef" />
+                <ScalarProperty Name="CategoryTranslatedID" ColumnName="CategoryTranslatedID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Company">
+            <EntityTypeMapping TypeName="SkuSearchDBModel.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="CompanyLongitude" ColumnName="CompanyLongitude" />
+                <ScalarProperty Name="CompanyLatitude" ColumnName="CompanyLatitude" />
+                <ScalarProperty Name="CompanyLocationCountry" ColumnName="CompanyLocationCountry" />
+                <ScalarProperty Name="CompanyPostcode" ColumnName="CompanyPostcode" />
+                <ScalarProperty Name="CompanyCounty" ColumnName="CompanyCounty" />
+                <ScalarProperty Name="CompanyTown" ColumnName="CompanyTown" />
+                <ScalarProperty Name="CompanyAddess2" ColumnName="CompanyAddess2" />
+                <ScalarProperty Name="CompanyAddress1" ColumnName="CompanyAddress1" />
+                <ScalarProperty Name="CompanyUrl" ColumnName="CompanyUrl" />
+                <ScalarProperty Name="CompanyLogo" ColumnName="CompanyLogo" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+                <ScalarProperty Name="CompanyCountry" ColumnName="CompanyCountry" />
+                <ScalarProperty Name="CompanyNameNative" ColumnName="CompanyNameNative" />
+                <ScalarProperty Name="CompanyNameEn" ColumnName="CompanyNameEn" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Company_StockLocation">
+            <EntityTypeMapping TypeName="SkuSearchDBModel.Company_StockLocation">
+              <MappingFragment StoreEntitySet="Company_StockLocation">
+                <ScalarProperty Name="StockLocationRef" ColumnName="StockLocationRef" />
+                <ScalarProperty Name="CompanyRef" ColumnName="CompanyRef" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompanyTranslated">
+            <EntityTypeMapping TypeName="SkuSearchDBModel.CompanyTranslated">
+              <MappingFragment StoreEntitySet="CompanyTranslated">
+                <ScalarProperty Name="CompanyTranslatedName" ColumnName="CompanyTranslatedName" />
+                <ScalarProperty Name="LanguageRef" ColumnName="LanguageRef" />
+                <ScalarProperty Name="CompanyRef" ColumnName="CompanyRef" />
+                <ScalarProperty Name="CompanyTranslatedID" ColumnName="CompanyTranslatedID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="SkuSearchDBModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="EmployeeType" ColumnName="EmployeeType" />
+                <ScalarProperty Name="CompanyRef" ColumnName="CompanyRef" />
+                <ScalarProperty Name="UserRef" ColumnName="UserRef" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MultilanguageProperty">
+            <EntityTypeMapping TypeName="SkuSearchDBModel.MultilanguageProperty">
+              <MappingFragment StoreEntitySet="MultilanguageProperty">
+                <ScalarProperty Name="MultilanguagePropertyProductURL" ColumnName="MultilanguagePropertyProductURL" />
+                <ScalarProperty Name="MultilanguagePropertyProductDescription" ColumnName="MultilanguagePropertyProductDescription" />
+                <ScalarProperty Name="MultilanguagePropertyProductName" ColumnName="MultilanguagePropertyProductName" />
+                <ScalarProperty Name="ProductRef" ColumnName="ProductRef" />
+                <ScalarProperty Name="WorldLanguageRef" ColumnName="WorldLanguageRef" />
+                <ScalarProperty Name="MultilanguagePropertyID" ColumnName="MultilanguagePropertyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product">
+            <EntityTypeMapping TypeName="SkuSearchDBModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
+                <ScalarProperty Name="ProductAdditionalCode" ColumnName="ProductAdditionalCode" />
+                <ScalarProperty Name="ProductBarCode" ColumnName="ProductBarCode" />
+                <ScalarProperty Name="CategoryRef" ColumnName="CategoryRef" />
+                <ScalarProperty Name="CompanyRef" ColumnName="CompanyRef" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductStorage">
+            <EntityTypeMapping TypeName="SkuSearchDBModel.ProductStorage">
+              <MappingFragment StoreEntitySet="ProductStorage">
+                <ScalarProperty Name="ProductStorageQuantityLeft" ColumnName="ProductStorageQuantityLeft" />
+                <ScalarProperty Name="ProductStorageMinShownQuantity" ColumnName="ProductStorageMinShownQuantity" />
+                <ScalarProperty Name="ProductStorageMaxShownQuantity" ColumnName="ProductStorageMaxShownQuantity" />
+                <ScalarProperty Name="ProductStorageDeliveryTime" ColumnName="ProductStorageDeliveryTime" />
+                <ScalarProperty Name="ProductStorageLocationStatus" ColumnName="ProductStorageLocationStatus" />
+                <ScalarProperty Name="StockLocationRef" ColumnName="StockLocationRef" />
+                <ScalarProperty Name="ProductRef" ColumnName="ProductRef" />
+                <ScalarProperty Name="ProductStorageID" ColumnName="ProductStorageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StockLocation">
+            <EntityTypeMapping TypeName="SkuSearchDBModel.StockLocation">
+              <MappingFragment StoreEntitySet="StockLocation">
+                <ScalarProperty Name="StockLocationLongitude" ColumnName="StockLocationLongitude" />
+                <ScalarProperty Name="StockLocationLatitude" ColumnName="StockLocationLatitude" />
+                <ScalarProperty Name="StockLocationCountry" ColumnName="StockLocationCountry" />
+                <ScalarProperty Name="StockLocationPostcode" ColumnName="StockLocationPostcode" />
+                <ScalarProperty Name="StockLocationCounty" ColumnName="StockLocationCounty" />
+                <ScalarProperty Name="StockLocationTown" ColumnName="StockLocationTown" />
+                <ScalarProperty Name="StockLocationAddess2" ColumnName="StockLocationAddess2" />
+                <ScalarProperty Name="StockLocationAddress1" ColumnName="StockLocationAddress1" />
+                <ScalarProperty Name="StockLocationUrl" ColumnName="StockLocationUrl" />
+                <ScalarProperty Name="StockLocationEmail" ColumnName="StockLocationEmail" />
+                <ScalarProperty Name="StockLocationPhone" ColumnName="StockLocationPhone" />
+                <ScalarProperty Name="StockLocationWorkingHoursRef" ColumnName="StockLocationWorkingHoursRef" />
+                <ScalarProperty Name="StockLocationDescription" ColumnName="StockLocationDescription" />
+                <ScalarProperty Name="StockLocationOwnerType" ColumnName="StockLocationOwnerType" />
+                <ScalarProperty Name="StockLocationName" ColumnName="StockLocationName" />
+                <ScalarProperty Name="StockLocationID" ColumnName="StockLocationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StockLocationTranslated">
+            <EntityTypeMapping TypeName="SkuSearchDBModel.StockLocationTranslated">
+              <MappingFragment StoreEntitySet="StockLocationTranslated">
+                <ScalarProperty Name="StockLocationTraslatedName" ColumnName="StockLocationTraslatedName" />
+                <ScalarProperty Name="WorldLanguageRef" ColumnName="WorldLanguageRef" />
+                <ScalarProperty Name="StockLocationRef" ColumnName="StockLocationRef" />
+                <ScalarProperty Name="StockLocationTraslatedID" ColumnName="StockLocationTraslatedID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="SkuSearchDBModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Translation">
+            <EntityTypeMapping TypeName="SkuSearchDBModel.Translation">
+              <MappingFragment StoreEntitySet="Translation">
+                <ScalarProperty Name="TranslationValue" ColumnName="TranslationValue" />
+                <ScalarProperty Name="TranslationKey" ColumnName="TranslationKey" />
+                <ScalarProperty Name="WorldLanguageRef" ColumnName="WorldLanguageRef" />
+                <ScalarProperty Name="TranslationID" ColumnName="TranslationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="SkuSearchDBModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkingHours">
+            <EntityTypeMapping TypeName="SkuSearchDBModel.WorkingHours">
+              <MappingFragment StoreEntitySet="WorkingHours">
+                <ScalarProperty Name="WorkingHoursLunchTimeEnd" ColumnName="WorkingHoursLunchTimeEnd" />
+                <ScalarProperty Name="WorkingHoursLunchTimeBegin" ColumnName="WorkingHoursLunchTimeBegin" />
+                <ScalarProperty Name="WorkingHoursCloseTime" ColumnName="WorkingHoursCloseTime" />
+                <ScalarProperty Name="WorkingHoursOpenTime" ColumnName="WorkingHoursOpenTime" />
+                <ScalarProperty Name="WorkingHoursDayOfWeek" ColumnName="WorkingHoursDayOfWeek" />
+                <ScalarProperty Name="StockLocationRef" ColumnName="StockLocationRef" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorldLanguage">
+            <EntityTypeMapping TypeName="SkuSearchDBModel.WorldLanguage">
+              <MappingFragment StoreEntitySet="WorldLanguage">
+                <ScalarProperty Name="WorldLanguageName" ColumnName="WorldLanguageName" />
+                <ScalarProperty Name="WorldLanguageID" ColumnName="WorldLanguageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
