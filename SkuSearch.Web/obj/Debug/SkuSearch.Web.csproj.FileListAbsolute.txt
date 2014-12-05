@@ -184,10 +184,7 @@ E:\SkuGeneralFolder\SkuSearch\SkuSearch.Web\bin\Microsoft.Web.Infrastructure.dll
 E:\SkuGeneralFolder\SkuSearch\SkuSearch.Web\bin\Newtonsoft.Json.dll
 E:\SkuGeneralFolder\SkuSearch\SkuSearch.Web\bin\SkuSearch.Business.dll
 E:\SkuGeneralFolder\SkuSearch\SkuSearch.Web\bin\SkuSearch.DataAccess.dll
-E:\SkuGeneralFolder\SkuSearch\SkuSearch.Web\bin\System.Net.Http.Formatting.dll
 E:\SkuGeneralFolder\SkuSearch\SkuSearch.Web\bin\System.Web.Helpers.dll
-E:\SkuGeneralFolder\SkuSearch\SkuSearch.Web\bin\System.Web.Http.dll
-E:\SkuGeneralFolder\SkuSearch\SkuSearch.Web\bin\System.Web.Http.WebHost.dll
 E:\SkuGeneralFolder\SkuSearch\SkuSearch.Web\bin\System.Web.Mvc.dll
 E:\SkuGeneralFolder\SkuSearch\SkuSearch.Web\bin\System.Web.Optimization.dll
 E:\SkuGeneralFolder\SkuSearch\SkuSearch.Web\bin\System.Web.Razor.dll
@@ -205,10 +202,7 @@ E:\SkuGeneralFolder\SkuSearch\SkuSearch.Web\bin\EntityFramework.xml
 E:\SkuGeneralFolder\SkuSearch\SkuSearch.Web\bin\EntityFramework.SqlServer.xml
 E:\SkuGeneralFolder\SkuSearch\SkuSearch.Web\bin\Newtonsoft.Json.xml
 E:\SkuGeneralFolder\SkuSearch\SkuSearch.Web\bin\System.Web.Optimization.xml
-E:\SkuGeneralFolder\SkuSearch\SkuSearch.Web\bin\System.Net.Http.Formatting.xml
 E:\SkuGeneralFolder\SkuSearch\SkuSearch.Web\bin\System.Web.Helpers.xml
-E:\SkuGeneralFolder\SkuSearch\SkuSearch.Web\bin\System.Web.Http.xml
-E:\SkuGeneralFolder\SkuSearch\SkuSearch.Web\bin\System.Web.Http.WebHost.xml
 E:\SkuGeneralFolder\SkuSearch\SkuSearch.Web\bin\System.Web.Mvc.xml
 E:\SkuGeneralFolder\SkuSearch\SkuSearch.Web\bin\System.Web.Razor.xml
 E:\SkuGeneralFolder\SkuSearch\SkuSearch.Web\bin\System.Web.WebPages.xml

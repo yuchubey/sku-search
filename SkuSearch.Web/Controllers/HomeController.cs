@@ -25,6 +25,5 @@ namespace SkuSearch.Web.Controllers
 
             return View(tuple);            
         }
-
     }
 }
